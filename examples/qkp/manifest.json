@@ -1,0 +1,30 @@
+{
+  "purpose": "Pretrained EnerGNN QKP optimization example using Gurobi.",
+  "source_run": "full_lr1e5_tau005_t05_a005_linf01",
+  "source_split": "QKP/test",
+  "instance_ids": [
+    5,
+    15,
+    35
+  ],
+  "selection": "First three test instance filenames in source order.",
+  "generation_seed": 123,
+  "model_config": {
+    "dc": 7,
+    "dm": 7,
+    "de": 3,
+    "dh": 128,
+    "nlayers": 2,
+    "dropout": 0.1,
+    "problem": "qkp",
+    "qkp_readout_variant": "size_aware",
+    "ca_head_variant": "mlp32"
+  },
+  "sha256": {
+    "best.ckpt": "e01c9ff8a26ac4f44f213d06438b149cbe8dd37a8087a957304cbebca4a6bf67",
+    "data/instance_0005.npz": "e0468812a91d8a7c8fd3b79a969805556b6377ee4ad6bade44ef602b88778a2e",
+    "data/instance_0015.npz": "033f320f62db09e196b9fd2c14ec485b2351ec8cb3aaaaf554913bb9ec139c6e",
+    "data/instance_0035.npz": "02d9c34092a972c8e136844cef623a39ebec844ebfb75361d15636de82fb9cdb",
+    "training_config.json": "4a4284f68f0d8807315eb7f1efc313697b5c2c9ab81237107b568c42cbfe5e87"
+  }
+}

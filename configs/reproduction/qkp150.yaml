@@ -1,0 +1,44 @@
+# Seed 123 exactly reproduces p, Q, w and W for all 1000 existing QKP inputs.
+name: qkp150
+stages:
+  generate:
+    - module: qkp_dataset.dataset_maker
+      args:
+        --output-dir: data/reproduced/qkp150/all
+        --n-instances: 1000
+        --n-items: 150
+        --sparsity: 0.3
+        --seed: 123
+        --threads: 1
+        --n-jobs: 8
+        --time-limit: 3600
+        --n-feasible-negs: 128
+        --n-infeasible-negs: 64
+        --pos-threshold: 0.01
+  split:
+    - module: qkp_dataset.split_dataset
+      args:
+        --input-dir: data/reproduced/qkp150/all
+        --output-dir: data/reproduced/QKP
+        --train-frac: 0.8
+        --val-frac: 0.1
+        --test-frac: 0.1
+        --seed: 123
+  train:
+    - module: gnn.training.train
+      args:
+        --problem: qkp
+        --model_type: energnn
+        --data_dir: data/reproduced/QKP/train
+        --val_dir: data/reproduced/QKP/val
+        --test_dir: data/reproduced/QKP/test
+        --out_dir: runs/reproduction/qkp150
+        --train_seed: 10
+  evaluate:
+    - module: gnn.inference.run_milp
+      args:
+        --problem: qkp
+        --model_type: energnn
+        --ckpt: runs/reproduction/qkp150/best.ckpt
+        --data_dir: data/reproduced/QKP/test
+        --prediction_log_jsonl: runs/reproduction/qkp150/test_predictions.jsonl

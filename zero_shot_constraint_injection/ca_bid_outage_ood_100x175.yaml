@@ -1,0 +1,26 @@
+evaluation:
+  name: ca_bid_outage_ood
+  data_dir: data/CA/175/test
+  checkpoint: null
+  removal_sizes: [5, 10, 15]
+  random_scenarios_per_k: 10
+  force_rejected_sizes: [1, 3, 5]
+  enable_random_winner_removal: true
+  enable_high_value_winner_removal: true
+  enable_high_value_rejected_force: true
+  accepted_off_rejected_on: false
+  max_singles_per_instance: null
+  max_pairs_per_instance: null
+  max_triples_per_instance: null
+  seed: 0
+
+solver:
+  time_limit: 3600
+  threads: 8
+  mip_gap: 0.0
+  ca_k_max: null
+
+output:
+  output_dir: results/ca_bid_outage_ood_100x175
+  save_instance_results: true
+  save_summary_tables: true

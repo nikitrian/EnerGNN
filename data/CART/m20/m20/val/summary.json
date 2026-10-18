@@ -1,0 +1,11 @@
+{
+  "split": "val",
+  "instances": 0,
+  "input_instances": 0,
+  "complete": true,
+  "samples": 0,
+  "avg_samples_per_instance": 0.0,
+  "label_counts": {},
+  "full_milp_optimal": 0,
+  "avg_full_runtime": 0.0
+}

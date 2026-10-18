@@ -1,0 +1,82 @@
+# CART16 sampled labels from existing patient inputs.
+name: cart16_detailed
+stages:
+  generate:
+    - module: cart_dataset.dataset_maker_masks
+      args: &cart16_train
+        --dat-dir: data/CART/m16/train_patient_dats
+        --input-source: data/CART/m16/train
+        --split: train
+        --out-dir: runs/CART16_train_detailed_labels
+        --candidates-per-instance: 160
+        --oversample-factor: 2
+        --sampling-seed: 515151
+        --time-horizon: 130
+        --turnaround-limit: 17
+        --mip-gap: 0.0001
+        --solver-threads: 8
+        --prepare-plans-only: true
+    - module: cart_dataset.dataset_maker_masks
+      args: &cart16_val
+        <<: *cart16_train
+        --dat-dir: data/CART/m16/val_patient_dats
+        --input-source: data/CART/m16/val
+        --split: val
+        --out-dir: runs/CART16_val_detailed_labels
+    - module: cart_dataset.dataset_maker_masks
+      args: &cart16_test
+        <<: *cart16_train
+        --dat-dir: data/CART/m16/test_patient_dats
+        --input-source: data/CART/m16/test
+        --split: test
+        --out-dir: runs/CART16_test_detailed_labels
+  score:
+    - module: cart_dataset.dataset_maker_masks
+      args:
+        <<: *cart16_train
+        --prepare-plans-only: false
+    - module: cart_dataset.dataset_maker_masks
+      args:
+        <<: *cart16_val
+        --prepare-plans-only: false
+    - module: cart_dataset.dataset_maker_masks
+      args:
+        <<: *cart16_test
+        --prepare-plans-only: false
+  collect:
+    - module: cart_dataset.dataset_maker_masks
+      args:
+        <<: *cart16_train
+        --prepare-plans-only: false
+        --collect-only: true
+        --dataset-source: data/CART/m16/train
+    - module: cart_dataset.dataset_maker_masks
+      args:
+        <<: *cart16_val
+        --prepare-plans-only: false
+        --collect-only: true
+        --dataset-source: data/CART/m16/val
+    - module: cart_dataset.dataset_maker_masks
+      args:
+        <<: *cart16_test
+        --prepare-plans-only: false
+        --collect-only: true
+        --dataset-source: data/CART/m16/test
+  train:
+    - module: gnn.training.train
+      args:
+        --problem: cart
+        --model_type: energnn
+        --data_dir: runs/CART16_train_detailed_labels
+        --val_dir: runs/CART16_val_detailed_labels
+        --test_dir: runs/CART16_test_detailed_labels
+        --out_dir: runs/reproduction/cart16_detailed
+        --train_seed: 10
+  evaluate:
+    - module: gnn.inference.run_milp
+      args:
+        --problem: cart
+        --model_type: energnn
+        --ckpt: runs/reproduction/cart16_detailed/best.ckpt
+        --data_dir: runs/CART16_test_detailed_labels
+        --prediction_log_jsonl: runs/reproduction/cart16_detailed/test_predictions.jsonl

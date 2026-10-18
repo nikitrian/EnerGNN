@@ -1,0 +1,26 @@
+evaluation:
+  name: cart_facility_constraints
+  facility_count: 16
+  checkpoint: null
+  train_dir: data/CART/m16/train
+  test_dir: data/CART/m16/test
+  static_config: data/CART/m16/test/static_config.json
+  outage_sizes: []
+  force_off: []
+  force_on: []
+  max_facilities: [4, 6, 8]
+  active_off_inactive_on: false
+  seed: 0
+  cart_symmetry_breaking: false
+
+solver:
+  time_limit: 3600
+  threads: 8
+  mip_gap: 0.0
+  min_k: 0
+  max_k: 0
+
+output:
+  output_dir: results/cart_facility_constraints_m16
+  save_instance_results: true
+  save_summary_tables: true

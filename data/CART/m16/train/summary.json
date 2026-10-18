@@ -1,0 +1,15 @@
+{
+  "split": "train",
+  "instances": 800,
+  "input_instances": 800,
+  "complete": true,
+  "samples": 128000,
+  "avg_samples_per_instance": 160.0,
+  "label_counts": {
+    "positive": 800,
+    "ham_neg_feas": 95835,
+    "ham_neg_infeas": 31365
+  },
+  "full_milp_optimal": 800,
+  "avg_full_runtime": 0.9396651528750953
+}

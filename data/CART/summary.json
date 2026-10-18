@@ -1,0 +1,99 @@
+{
+  "generated_at": "2026-10-02T16:00:33Z",
+  "base_dat": "C:/Users/nt320/PhD/EnerGNN/cart_dataset/Data_CART_og.dat",
+  "facility_counts": [
+    16
+  ],
+  "split_counts": {
+    "train": 800,
+    "val": 100,
+    "test": 100
+  },
+  "objective_model": "cart_detailed",
+  "turnaround_limit": 17.0,
+  "generation_config": {
+    "base_dat": "C:/Users/nt320/PhD/EnerGNN/cart_dataset/Data_CART_og.dat",
+    "out_dir": "data/reproduced/CART",
+    "facility_counts": [
+      16
+    ],
+    "train_count": 800,
+    "val_count": 100,
+    "test_count": 100,
+    "candidates_per_instance": null,
+    "oversample_factor": 2,
+    "max_positives": 3,
+    "pos_threshold": 1e-06,
+    "infeasible_fraction": 0.3,
+    "total_low": 10,
+    "total_high": 650,
+    "distribution_mode": "mixed",
+    "seed": 515151,
+    "demand_horizon": 110,
+    "time_horizon": 130,
+    "turnaround_limit": 17.0,
+    "mip_gap": 0.0,
+    "full_time_limit": 3600.0,
+    "fixed_time_limit": 3600.0,
+    "solver_threads": 1,
+    "progress_every": 10,
+    "overwrite": false,
+    "resume": true,
+    "prepare_only": false
+  },
+  "strategy": "solve unrestricted detailed CART; sample, score, and stratify fixed-E1 masks",
+  "scales": {
+    "m16": {
+      "facility_count": 16,
+      "target_candidates_per_instance": 160,
+      "splits": {
+        "train": {
+          "split": "train",
+          "instances": 800,
+          "input_instances": 800,
+          "complete": true,
+          "samples": 128000,
+          "avg_samples_per_instance": 160.0,
+          "label_counts": {
+            "positive": 800,
+            "ham_neg_feas": 95835,
+            "ham_neg_infeas": 31365
+          },
+          "full_milp_optimal": 800,
+          "avg_full_runtime": 0.9396651528750953
+        },
+        "val": {
+          "split": "val",
+          "instances": 100,
+          "input_instances": 100,
+          "complete": true,
+          "samples": 16000,
+          "avg_samples_per_instance": 160.0,
+          "label_counts": {
+            "positive": 100,
+            "ham_neg_feas": 11994,
+            "ham_neg_infeas": 3906
+          },
+          "full_milp_optimal": 100,
+          "avg_full_runtime": 0.9065370550012449
+        },
+        "test": {
+          "split": "test",
+          "instances": 100,
+          "input_instances": 100,
+          "complete": true,
+          "samples": 16000,
+          "avg_samples_per_instance": 160.0,
+          "label_counts": {
+            "positive": 100,
+            "ham_neg_feas": 11900,
+            "ham_neg_infeas": 4000
+          },
+          "full_milp_optimal": 100,
+          "avg_full_runtime": 0.9058848720020615
+        }
+      },
+      "complete": true
+    }
+  }
+}

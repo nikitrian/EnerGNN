@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mip-energnn"
+version = "0.0.1"
+description = "Energy-based graph neural networks for mixed-integer optimization"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "pyomo>=6.6",
+    "PyYAML>=6.0",
+    "scipy>=1.10",
+    "torch>=2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+fast = [
+    "torch-scatter>=2.1",
+]
+solver = [
+    "gurobipy>=11.0",
+    "packaging",
+]
+
+[tool.setuptools]
+package-dir = {"" = "."}
+
+[tool.setuptools.data-files]
+"examples/qkp" = ["examples/qkp/*.json", "examples/qkp/*.ckpt"]
+"examples/qkp/data" = ["examples/qkp/data/*.npz"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = [
+    "cart_dataset",
+    "cart_dataset.*",
+    "ca_dataset",
+    "ca_dataset.*",
+    "qkp_dataset",
+    "qkp_dataset.*",
+    "experiments",
+    "experiments.*",
+    "gnn",
+    "gnn.*",
+    "zero_shot_constraint_injection",
+    "zero_shot_constraint_injection.*",
+]
+exclude = [
+    "data*",
+    "generated_instances*",
+    "runs*",
+    "results*",
+    "figures*",
+]
+
+[tool.setuptools.package-data]
+cart_dataset = ["*.dat", "DATA_SOURCE.md", "jobs/*.pbs"]
+zero_shot_constraint_injection = ["*.yaml", "*.yml", "*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["gnn/tests"]
+pythonpath = ["."]

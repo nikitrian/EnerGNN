@@ -1,0 +1,47 @@
+#!/bin/bash
+#PBS -N CART16_labels
+#PBS -J 1-1000
+#PBS -l walltime=72:00:00
+#PBS -l select=1:ncpus=8:mem=250gb:ompthreads=8
+#PBS -koed
+
+set -euo pipefail
+cd "$PBS_O_WORKDIR"
+# Activate your Python environment before qsub. Set CART_GUROBI_MODULE if needed.
+if [ -n "${CART_GUROBI_MODULE:-}" ]; then
+  module load "$CART_GUROBI_MODULE"
+fi
+
+# Preparation uses one job per instance; scoring uses ten jobs per instance.
+split="${CART_SPLIT:-val}"
+turnaround="${CART_TURNAROUND:-17}"
+task_index=$((PBS_ARRAY_INDEX - 1))
+out_dir="runs/CART16_${split}_detailed_labels"
+phase="${CART_PHASE:-score}"
+if [ "$phase" = prepare ]; then
+  instance_index=$task_index
+  phase_args=(--prepare-plans-only)
+elif [ "$phase" = score ]; then
+  instance_index=$((task_index / 10))
+  phase_args=(--num-mask-shards 10 --mask-shard-index "$((task_index % 10))")
+else
+  printf 'Unknown CART_PHASE: %s\n' "$phase" >&2
+  exit 2
+fi
+
+python -u -m cart_dataset.dataset_maker_masks \
+  --dat-dir "data/CART/m16/${split}_patient_dats" \
+  --out-dir "$out_dir" \
+  --input-source "data/CART/m16/${split}" --split "$split" \
+  --instance-index "$instance_index" \
+  --cart16-pool --candidates-per-instance 160 --oversample-factor 2 \
+  --max-positives 3 --infeasible-fraction 0.30 --tie-tolerance 0.000001 \
+  --sampling-seed 515151 \
+  "${phase_args[@]}" \
+  --time-horizon 130 \
+  --turnaround-limit "$turnaround" \
+  --workers 1 --solver-threads 8 \
+  --time-limit "${CART_MASK_TIME_LIMIT:-3600}" \
+  --full-time-limit "${CART_FULL_TIME_LIMIT:-86400}" \
+  --mip-gap 0.0001 \
+  --summary-json "${out_dir}/${phase}_task_${PBS_ARRAY_INDEX}_summary.json"

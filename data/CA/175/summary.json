@@ -1,0 +1,146 @@
+{
+  "seed": 123,
+  "workers": 8,
+  "solver_threads": 1,
+  "n_feasible_negs": 64,
+  "n_infeasible_negs": 50,
+  "solve_time_limit": null,
+  "max_positives": null,
+  "pos_threshold": 0.01,
+  "generator": {
+    "min_value": 1,
+    "max_value": 100,
+    "value_deviation": 0.5,
+    "add_item_prob": 0.7,
+    "max_n_sub_bids": 5,
+    "additivity": 0.2,
+    "budget_factor": 1.5,
+    "resale_factor": 0.5,
+    "integers": false,
+    "warnings": false
+  },
+  "sampling_policy": {
+    "feasible": {
+      "source": "quota-driven mix of incumbent, guided local-search Hamming, and far Hamming candidates",
+      "incumbent_threshold": 0.01,
+      "max_positives": null,
+      "regret_thresholds": [
+        0.01,
+        0.02,
+        0.05
+      ],
+      "regret_targets_for_n_feasible": [
+        3,
+        6,
+        13
+      ],
+      "source_weights": [
+        0.2,
+        0.4,
+        0.4
+      ],
+      "hamming_buckets": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          7,
+          12
+        ]
+      ],
+      "bucket_weights": [
+        0.15,
+        0.3,
+        0.35,
+        0.2
+      ]
+    },
+    "infeasible": {
+      "source": "quota-driven violation bands with base-mask and random generators",
+      "violation_bands": [
+        "violation_1",
+        "violation_2_3",
+        "violation_gt_3"
+      ],
+      "violation_weights": [
+        0.4,
+        0.3,
+        0.3
+      ]
+    }
+  },
+  "scales": {
+    "small": {
+      "n_items": 25,
+      "n_bids": 50,
+      "solve_time_limit": 60.0,
+      "max_positives": 50,
+      "train_count": 1000
+    },
+    "medium": {
+      "n_items": 50,
+      "n_bids": 100,
+      "solve_time_limit": 3600.0,
+      "max_positives": 50,
+      "train_count": 1000
+    },
+    "large": {
+      "n_items": 100,
+      "n_bids": 200,
+      "solve_time_limit": 3600.0,
+      "max_positives": 50,
+      "train_count": 1000
+    },
+    "ca100_b250": {
+      "n_items": 100,
+      "n_bids": 250,
+      "solve_time_limit": 3600.0,
+      "max_positives": 50,
+      "train_count": 1000
+    },
+    "ca100_b300": {
+      "n_items": 100,
+      "n_bids": 300,
+      "solve_time_limit": 3600.0,
+      "max_positives": 50,
+      "train_count": 1000
+    },
+    "ca100_b400": {
+      "n_items": 100,
+      "n_bids": 400,
+      "solve_time_limit": 3600.0,
+      "max_positives": 50,
+      "train_count": 1000
+    },
+    "ca100_b600": {
+      "n_items": 100,
+      "n_bids": 600,
+      "solve_time_limit": 3600.0,
+      "max_positives": 50,
+      "train_count": 1000
+    }
+  },
+  "selected_scales": [
+    "large"
+  ],
+  "selected_scale_specs": {
+    "large": {
+      "n_items": 100,
+      "n_bids": 175
+    }
+  },
+  "splits": {
+    "train": 800,
+    "val": 100,
+    "test": 100
+  }
+}

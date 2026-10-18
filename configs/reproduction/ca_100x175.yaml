@@ -1,0 +1,39 @@
+# Settings recorded by data/CA/175/summary.json.
+name: ca_100x175
+stages:
+  generate:
+    - module: ca_dataset.dataset_maker
+      args:
+        --output-dir: data/reproduced/ca_100x175
+        --scale: "175"
+        --n-items: 100
+        --n-bids: 175
+        --train-count: 800
+        --val-count: 100
+        --test-count: 100
+        --seed: 123
+        --workers: 8
+        --solver-threads: 1
+        --solve-time-limit: 3600
+        --n-feasible-negs: 64
+        --n-infeasible-negs: 50
+        --max-positives: 50
+        --pos-threshold: 0.01
+  train:
+    - module: gnn.training.train
+      args:
+        --problem: ca
+        --model_type: energnn
+        --data_dir: data/reproduced/ca_100x175/175/train
+        --val_dir: data/reproduced/ca_100x175/175/val
+        --test_dir: data/reproduced/ca_100x175/175/test
+        --out_dir: runs/reproduction/ca_100x175
+        --train_seed: 10
+  evaluate:
+    - module: gnn.inference.run_milp
+      args:
+        --problem: ca
+        --model_type: energnn
+        --ckpt: runs/reproduction/ca_100x175/best.ckpt
+        --data_dir: data/reproduced/ca_100x175/175/test
+        --prediction_log_jsonl: runs/reproduction/ca_100x175/test_predictions.jsonl

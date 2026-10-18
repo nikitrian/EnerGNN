@@ -1,0 +1,90 @@
+# Local/editor state
+.agents/
+.claude/
+.codex/
+.vscode/
+.idea/
+
+# Python caches and environments
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+*.dll
+*.lib
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+.env
+.env.*
+
+# Packaging/build outputs
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# Generated datasets and experiment outputs
+/data/*
+!/data/CA/
+!/data/CART/
+!/data/QKP/
+generated_instances/
+cauctions_dataset/
+cauctions_runs/
+runs/**
+results/
+figures/
+outputs/
+models/
+checkpoints/
+all-objects.txt
+release/
+
+# Keep source packages with names that overlap ignored artifact directories
+!gnn/data/
+!gnn/data/**
+!gnn/models/
+!gnn/models/**
+gnn/**/__pycache__/
+gnn/**/*.py[cod]
+
+# Model/solver/artifact files
+*.ckpt
+*.pt
+*.pth
+*.pkl
+*.pickle
+*.npz
+*.npy
+*.lp
+*.mps
+*.sol
+*.log
+
+# Small, intentional pretrained QKP demonstration assets
+!examples/qkp/best.ckpt
+!examples/qkp/data/instance_*.npz
+
+# Published trained runs: retain the selected model and its provenance.
+!runs/**/
+!runs/**/best.ckpt
+!runs/**/run_config.json
+!runs/**/metrics.csv
+!runs/**/summary_metrics.csv
+!runs/**/*.jsonl
+!runs/pretrained/README.md
+
+# Published benchmark inputs
+!/data/CA/**/*.npz
+!/data/CART/**/*.npz
+!/data/QKP/**/*.npz
+
+# OS junk
+.DS_Store
+Thumbs.db

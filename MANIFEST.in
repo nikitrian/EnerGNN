@@ -1,0 +1,10 @@
+include README.md
+include LICENSE
+include CITATION.cff
+recursive-include zero_shot_constraint_injection *.py *.yaml *.yml *.json
+recursive-include docs *.md
+include cart_dataset/*.dat
+include cart_dataset/DATA_SOURCE.md
+recursive-include cart_dataset/jobs *.pbs
+recursive-include configs *.yaml *.yml *.json
+recursive-include examples/qkp *.json *.jsonl *.ckpt *.npz

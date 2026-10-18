@@ -1,0 +1,13 @@
+{
+  "split": "test",
+  "instances": 100,
+  "input_instances": 100,
+  "complete": true,
+  "samples": 100,
+  "avg_samples_per_instance": 1.0,
+  "label_counts": {
+    "positive": 100
+  },
+  "full_milp_optimal": 100,
+  "avg_full_runtime": 0.6574470589973498
+}

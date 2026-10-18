@@ -1,0 +1,42 @@
+{
+  "facility_count": 12,
+  "target_candidates_per_instance": 1,
+  "splits": {
+    "train": {
+      "split": "train",
+      "instances": 0,
+      "input_instances": 0,
+      "complete": true,
+      "samples": 0,
+      "avg_samples_per_instance": 0.0,
+      "label_counts": {},
+      "full_milp_optimal": 0,
+      "avg_full_runtime": 0.0
+    },
+    "val": {
+      "split": "val",
+      "instances": 0,
+      "input_instances": 0,
+      "complete": true,
+      "samples": 0,
+      "avg_samples_per_instance": 0.0,
+      "label_counts": {},
+      "full_milp_optimal": 0,
+      "avg_full_runtime": 0.0
+    },
+    "test": {
+      "split": "test",
+      "instances": 100,
+      "input_instances": 100,
+      "complete": true,
+      "samples": 100,
+      "avg_samples_per_instance": 1.0,
+      "label_counts": {
+        "positive": 100
+      },
+      "full_milp_optimal": 100,
+      "avg_full_runtime": 0.4934999779984355
+    }
+  },
+  "complete": true
+}

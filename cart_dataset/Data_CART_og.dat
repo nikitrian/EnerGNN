@@ -1,0 +1,73 @@
+# Data for pyomo
+# Source: Triantafyllou et al. (2022), doi:10.1038/s41598-022-21290-5.
+# Attribution and upstream terms: DATA_SOURCE.md in this directory.
+
+set c := c1 c2 c3 c4;
+
+set m := 
+m1 
+m2 
+m3 
+m4 
+m5 
+m6
+;
+
+
+param CIM :=
+m1 2216.13
+m2 16621.00
+m3 5540.33
+m4 2216.13
+m5 16621.00
+m6 5540.33
+;
+
+param CVM :=
+m1 20920
+m2 156900
+m3 52300
+m4 20920
+m5 156900
+m6 52300
+;
+
+
+param CAPMAX :=
+m1 4
+m2 31
+m3 10
+m4 4
+m5 31
+m6 10
+;
+
+
+
+param U1 :=
+c1 m1 1040
+c1 m2 2600
+c1 m3 2600
+c1 m4 2900
+c1 m5 3500
+c1 m6 3500
+c2 m1 2600
+c2 m2 200
+c2 m3 2600
+c2 m4 2900
+c2 m5 3500
+c2 m6 3500
+c3 m1 1840
+c3 m2 2000
+c3 m3 2900
+c3 m4 2900
+c3 m5 3500
+c3 m6 3500
+c4 m1 1640
+c4 m2 1820
+c4 m3 2900
+c4 m4 2900
+c4 m5 3500
+c4 m6 3500
+;
+

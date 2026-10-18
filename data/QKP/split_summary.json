@@ -1,0 +1,41 @@
+{
+  "input_dir": "data/qkp150/all",
+  "output_dir": "data/qkp150_easy",
+  "seed": 123,
+  "train_count": 800,
+  "val_count": 100,
+  "test_count": 100,
+  "timeout_threshold": 3599.0,
+  "source_instances": 1000,
+  "source_certified_optimal": 661,
+  "source_unproven": 339,
+  "all_unproven_assigned_to_train": true,
+  "val_test_certified_only": true,
+  "splits": {
+    "train": {
+      "instances": 800,
+      "samples": 165590,
+      "certified_optimal": 461,
+      "unproven": 339
+    },
+    "val": {
+      "instances": 100,
+      "samples": 20598,
+      "certified_optimal": 100,
+      "unproven": 0
+    },
+    "test": {
+      "instances": 100,
+      "samples": 20566,
+      "certified_optimal": 100,
+      "unproven": 0
+    },
+    "test_hard": {
+      "instances": 0,
+      "samples": 0,
+      "certified_optimal": 0,
+      "unproven": 0
+    }
+  },
+  "notes": "train contains every source row with optimal=False and solve_time near 3600s, plus enough certified optimal=True rows to reach train_count; val/test contain only certified optimal=True rows."
+}

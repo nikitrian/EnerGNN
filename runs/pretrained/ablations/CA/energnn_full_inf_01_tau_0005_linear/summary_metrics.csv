@@ -1,0 +1,2 @@
+split,epoch,model_type,loss_variant,lr,top1_acc,eps_top1_acc,mean_regret@1,topk@3,mean_regret@3,topk@5,mean_regret@5,auc_feas,ema_regret
+test,1694,energnn,full,1e-06,0.95,0.9,0.04062203203910033,1.0,5.3363051265527356e-05,1.0,4.9220466098547e-17,0.7850706249475479,0.019165672006365694

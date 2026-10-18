@@ -1,0 +1,25 @@
+* text=auto
+
+*.py text eol=lf
+*.md text eol=lf
+*.toml text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.jsonl text eol=lf
+*.pbs text eol=lf
+*.cff text eol=lf
+
+*.ckpt binary
+*.pt binary
+*.pth binary
+*.pkl binary
+*.pickle binary
+*.npz binary
+*.npy binary
+*.pdf binary
+*.png binary
+
+# Benchmark candidate pools exceed GitHub's regular file-size limit.
+data/**/samples.jsonl filter=lfs diff=lfs merge=lfs -text
+runs/**/best.ckpt filter=lfs diff=lfs merge=lfs -text
