@@ -184,12 +184,14 @@ ZIPs may contain pointers instead of those files. For an existing clone, run
 The original CART input is attributed in
 [`cart_dataset/DATA_SOURCE.md`](cart_dataset/DATA_SOURCE.md).
 
-## License and Citation
 
-EnerGNN code is released under the [MIT license](LICENSE). Please cite the
-paper when using this repository; citation metadata is provided in
-[CITATION.cff](CITATION.cff):
+## Citation
+
+If you use EnerGNN in your research, please cite:
 
 > Triantafyllou, N., & Papathanasiou, M. M. (2026).
-> [EnerGNN: Learning Optimization-Compatible Energy Functions for Exact Constrained Combinatorial Inference](https://neurips.cc/virtual/2026/loc/sydney/poster/148678).
+> [EnerGNN: Learning Optimization-Compatible Energy Functions for Exact Constrained Combinatorial Inference](https://arxiv.org/abs/2610.33930).
 > In *Advances in Neural Information Processing Systems (NeurIPS 2026)*.
+
+See also the [NeurIPS 2026 paper page](https://neurips.cc/virtual/2026/loc/sydney/poster/148678).
+
