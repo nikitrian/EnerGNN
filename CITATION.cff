@@ -1,22 +1,29 @@
+
 cff-version: 1.2.0
 message: "Please cite the EnerGNN paper when using this software."
 type: software
 title: EnerGNN
+
 authors:
   - family-names: Triantafyllou
-    given-names: N.
+    given-names: Niki
   - family-names: Papathanasiou
-    given-names: M. M.
+    given-names: Maria M.
+
 version: 0.0.1
 license: MIT
+repository-code: "https://github.com/nikitrian/EnerGNN"
+url: "https://arxiv.org/abs/2610.33930"
+
 preferred-citation:
   type: conference-paper
   title: "EnerGNN: Learning Optimization-Compatible Energy Functions for Exact Constrained Combinatorial Inference"
   authors:
     - family-names: Triantafyllou
-      given-names: N.
+      given-names: Niki
     - family-names: Papathanasiou
-      given-names: M. M.
+      given-names: Maria M.
   year: 2026
-  collection-title: "Advances in Neural Information Processing Systems (NeurIPS 2026)"
+  collection-title: "Advances in Neural Information Processing Systems"
   url: "https://neurips.cc/virtual/2026/loc/sydney/poster/148678"
+
